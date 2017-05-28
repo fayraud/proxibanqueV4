@@ -15,8 +15,9 @@
 	</header>
 	<h:form>
 		<p:menubar>
+		<p:menuitem action="listeClients" value="Liste clients" />
 			<p:menuitem action="listeClients" value="Liste clients" />
-			<p:menuitem action="detailsClient" value="Retour page client" />
+			
 			<f:facet name="options">
 				<p:outputLabel class="barre"
 					value="Bonjour #{conseillerBean.conseiller.nom}, " />

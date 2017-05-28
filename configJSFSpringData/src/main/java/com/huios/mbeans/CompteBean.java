@@ -49,16 +49,18 @@ public class CompteBean implements Serializable {
 	private CompteEpargne compteEpargne;
 	@Autowired
 	private CompteCourant compteCourantASupprimer;
+	@Autowired
+	private CompteEpargne compteEpargneASupprimer;
 	
 	
 	
-	
-	
+	public CompteEpargne getCompteEpargneASupprimer() {
+		return compteEpargneASupprimer;
+	}
 
-
-	
-
-
+	public void setCompteEpargneASupprimer(CompteEpargne compteEpargneASupprimer) {
+		this.compteEpargneASupprimer = compteEpargneASupprimer;
+	}
 
 	public CompteCourant getCompteCourantASupprimer() {
 		return compteCourantASupprimer;
@@ -201,10 +203,33 @@ public class CompteBean implements Serializable {
 		 return "listeComptesDecouvert";
 	 }
 	 public String supprimerCompteCourant(){
-		 System.out.println("avant");
 		serviceCo.supprimerCompteCourant(compteCourantASupprimer);
-		System.out.println("apres");
 		return clientBean.afficherDetails();
+	 }
+	 public String supprimerCompteEpargne(){
+		serviceCo.supprimerCompteEpargne(compteEpargneASupprimer);
+		return clientBean.afficherDetails();
+	 }
+	 
+	 public String verificationSoldeCompteCourant(){
+		 if(compteCourantASupprimer.getSolde()==0){
+			 return "suppressionCompteCourant";
+		 }
+		 else{
+			 return "erreurSuppressionCompteCourant";
+		 }
+		 
+
+	 }
+	 public String verificationSoldeCompteEpargne(){
+		 if(compteEpargneASupprimer.getSolde()==0){
+			 return "suppressionCompteEpargne";
+		 }
+		 else{
+			 return "erreurSuppressionCompteEpargne";
+		 }
+		 
+
 	 }
 	 
 

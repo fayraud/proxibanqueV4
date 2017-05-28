@@ -15,14 +15,17 @@
 	</header>
 	<h:form>
 		<p:menubar>
-			<p:menuitem action="listeClients" value="Liste clients" />
-			<f:facet name="options">
-				<p:outputLabel class="barre"
-					value="Bonjour #{conseillerBean.conseiller.nom}, " />
-				<p:commandButton class="barre" type="submit" icon="ui-icon-extlink"
-					action="#{conseillerBean.deconnexion}" value="Déconnexion" />
-			</f:facet>
-		</p:menubar>
+		<p:menuitem action="listeClients" value="Liste clients" />
+		<f:facet name="options">
+			<p:outputLabel class="barre" value="Bonjour #{conseillerBean.conseiller.nom}, " />
+			 <p:splitButton value="MonCompte" >
+        <p:menuitem value="Changement mots de Passe"   action="changementPWD" />
+
+    </p:splitButton>
+            <p:commandButton class="barre" type="submit" icon="ui-icon-extlink" action="#{conseillerBean.deconnexion}" value="Déconnexion"/>
+            	
+         </f:facet>
+       </p:menubar>
 	</h:form>
 
 
@@ -106,7 +109,7 @@
 			</p:column>
 			<p:column>
 				<f:facet name="header">Supprimmer</f:facet>
-				<p:commandLink action="suppressionCompteCourant"
+				<p:commandLink action="#{compteBean.verificationSoldeCompteCourant}"
 					value="Supprimer">
 					<f:setPropertyActionListener value="#{c}"
 						target="#{compteBean.compteCourantASupprimer}" />
@@ -152,6 +155,15 @@
 					value="Virement">
 					<f:setPropertyActionListener value="#{c}"
 						target="#{virementBean.compteDebiteur}" />
+				</p:commandLink>
+
+			</p:column>
+			<p:column>
+				<f:facet name="header">Supprimmer</f:facet>
+				<p:commandLink action="#{compteBean.verificationSoldeCompteEpargne}"
+					value="Supprimer">
+					<f:setPropertyActionListener value="#{c}"
+						target="#{compteBean.compteEpargneASupprimer}" />
 				</p:commandLink>
 
 			</p:column>

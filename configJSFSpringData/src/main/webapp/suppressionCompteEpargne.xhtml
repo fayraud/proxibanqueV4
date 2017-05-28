@@ -5,8 +5,8 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta charset="UTF-8" />
-	<title>Accueil Conseiller</title>
-	<link rel="stylesheet" href = "css/style.css" />
+	<title>Suppression d'un compte</title>
+	<link rel="stylesheet" href="css/style.css" />
 </h:head>
 <h:body>
 <header>
@@ -15,6 +15,8 @@
 	</header>
 	<h:form>
 		<p:menubar>
+		<p:menuitem action="listeClients" value="Liste clients" />
+		<p:menuitem action="listeClients" value="Liste clients" />
 		<f:facet name="options">
 			<p:outputLabel class="barre" value="Bonjour #{conseillerBean.conseiller.nom}, " />
 			 <p:splitButton value="MonCompte" >
@@ -26,37 +28,36 @@
          </f:facet>
        </p:menubar>
 	</h:form>
-	<h3>Liste des clients</h3>
-	
+	<h2>Confirmer la suppression du compte</h2>
 	<h:form>
-		<p:dataTable value="#{clientBean.clients}" var="c" border="1" style="width: 700">
+		<p:dataTable value="#{compteBean.compteEpargneASupprimer}" var="c" border="1">
 
 			<p:column>
-				<f:facet name="header">ID</f:facet>
-				<h:outputText value="#{c.idPersonne}" />
+				<f:facet name="header">N° de Compte</f:facet>
+				<h:outputText value="#{c.numeroCompte}" />
 
 			</p:column>
 			<p:column>
-				<f:facet name="header">Nom</f:facet>
-				<h:outputText value="#{c.nom}" />
+				<f:facet name="header">Date d'ouverture</f:facet>
+				<h:outputText value="#{c.dateOuverture}" />
 
 			</p:column>
 			<p:column>
-				<f:facet name="header">Prénom</f:facet>
-				<h:outputText value="#{c.prenom}" />
+				<f:facet name="header">Solde</f:facet>
+				<h:outputText value="#{c.solde}€" />
 
 			</p:column>
-			<p:column>
-				<f:facet name="header">Détails</f:facet>
-				<h:commandLink action="#{clientBean.afficherDetails}"
-					value="Details">
-					<f:setPropertyActionListener value="#{c}"
-						target="#{clientBean.client}" />
-				</h:commandLink>
-
-			</p:column>
+		
 		</p:dataTable>
 	</h:form>
-<p:commandButton icon="fa-user-plus" action="#{clientBean.nouveau}" value="Ajouter un Client"/>
+
+	
+	<h:form>
+		<p:commandButton value="Comfirmer" action="#{compteBean.supprimerCompteEpargne()}" />
+	</h:form>
+	<h:form>
+		<p:commandButton value="Annuler" action="detailsClient" />
+	</h:form>
+
 </h:body>
 </html>

@@ -240,6 +240,12 @@ public class ServiceImp implements IServiceConseiller, IServiceGerant {
 		daoCo.delete(compteCourant);
 		
 	}
+	
+	@Override
+	public void supprimerCompteEpargne(CompteEpargne compteEpargne) {
+		daoCo.delete(compteEpargne);
+		
+	}
 
 
 	

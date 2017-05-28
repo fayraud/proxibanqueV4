@@ -41,8 +41,37 @@ public class ConseillerBean implements Serializable {
 	@Autowired
 	@ManagedProperty(value="#{gerantBean}")
 	private GerantBean gerantBean;
+	private String PWD;
+	private String PWDnew;
+	private String PWDnewConf;
 	
 	
+	
+
+	public String getPWD() {
+		return PWD;
+	}
+
+	public void setPWD(String pWD) {
+		PWD = pWD;
+	}
+
+	public String getPWDnew() {
+		return PWDnew;
+	}
+
+	public void setPWDnew(String pWDnew) {
+		PWDnew = pWDnew;
+	}
+
+	public String getPWDnewConf() {
+		return PWDnewConf;
+	}
+
+	public void setPWDnewConf(String pWDnewConf) {
+		PWDnewConf = pWDnewConf;
+	}
+
 	public Adresse getAdresse() {
 		return adresse;
 	}
@@ -129,6 +158,26 @@ public class ConseillerBean implements Serializable {
 		serviceG.modifierConseiller(conseiller);
 		return "detailsConseiller";
 	}
+	
+	public String changementPWD(){
+		if(PWD.equals(conseiller.getPwd())){
+			if(PWDnew.equals(PWDnewConf)){
+				conseiller.setPwd(PWDnew);
+				service.modifierConseiller(conseiller);
+			}
+			else{
+				return "PWDDif";
+			}
+			
+		}
+		else{
+			return "PWDFaux";
+		}
+		System.out.println("test");
+		return "listeClients";
+	}
+	
+	
 		
 
 }

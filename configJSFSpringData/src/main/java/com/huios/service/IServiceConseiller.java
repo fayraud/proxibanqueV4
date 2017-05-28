@@ -114,4 +114,6 @@ public interface IServiceConseiller {
 	
 	public void ajouterAdresse(long idPersonne,Adresse adresse);
 	public void supprimerCompteCourant(CompteCourant compteCourant);
+	public void supprimerCompteEpargne(CompteEpargne compteEpargne);
+	public void modifierConseiller(Conseiller conseiller);
 }

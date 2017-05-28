@@ -15,15 +15,17 @@
 	</header>
 	<h:form>
 		<p:menubar>
-			<p:menuitem action="listeClients" value="Liste clients" />
-			<p:menuitem action="detailsClient" value="Retour page client" />
-			<f:facet name="options">
-				<p:outputLabel class="barre"
-					value="Bonjour #{conseillerBean.conseiller.nom}, " />
-				<p:commandButton class="barre" type="submit" icon="ui-icon-extlink"
-					action="#{conseillerBean.deconnexion}" value="Déconnexion" />
-			</f:facet>
-		</p:menubar>
+		<p:menuitem action="listeClients" value="Liste clients" />
+		<f:facet name="options">
+			<p:outputLabel class="barre" value="Bonjour #{conseillerBean.conseiller.nom}, " />
+			 <p:splitButton value="MonCompte" >
+        <p:menuitem value="Changement mots de Passe"   action="changementPWD" />
+
+    </p:splitButton>
+            <p:commandButton class="barre" type="submit" icon="ui-icon-extlink" action="#{conseillerBean.deconnexion}" value="Déconnexion"/>
+            	
+         </f:facet>
+       </p:menubar>
 	</h:form>
 
 	<h:form>
