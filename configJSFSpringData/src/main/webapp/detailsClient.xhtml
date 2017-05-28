@@ -104,6 +104,15 @@
 				</p:commandLink>
 
 			</p:column>
+			<p:column>
+				<f:facet name="header">Supprimmer</f:facet>
+				<p:commandLink action="suppressionCompteCourant"
+					value="Supprimer">
+					<f:setPropertyActionListener value="#{c}"
+						target="#{compteBean.compteCourantASupprimer}" />
+				</p:commandLink>
+
+			</p:column>
 		</p:dataTable>
 	</h:form>
 	<br/>

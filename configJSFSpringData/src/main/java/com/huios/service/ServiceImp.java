@@ -70,7 +70,6 @@ public class ServiceImp implements IServiceConseiller, IServiceGerant {
 
 	@Override
 	public Collection<Compte> listerComptesClient(Client client) {
-		System.out.println("servImpl");
 		return daoCo.listerComptesClient(client);
 	}
 
@@ -215,22 +214,16 @@ public class ServiceImp implements IServiceConseiller, IServiceGerant {
 
 	@Override
 	public Collection<Compte> listeCompteDecouvert(Gerant gerant) {
+//		System.out.println(gerant);
 		Collection<Conseiller> conseillers= daoG.listerConseillerParGerant(gerant);
 		Collection<Compte> comptes = new ArrayList<>();
-		System.out.println("gerant");
-		System.out.println(conseillers);
 		for (Conseiller co : conseillers){
-			System.out.println(co);
 			Collection<Client> clients = new ArrayList<>();
 			clients = listerClientsParConseiller(co);
-			System.out.println(clients);
 			for(Client cl : clients ){
-				System.out.println(cl);
 				Collection<Compte> comptescl = new ArrayList<>();
 				comptescl = listerComptesClient(cl);
-				System.out.println(comptescl);
 				for(Compte c : comptescl){
-					System.out.println(c);
 					if(c.getSolde()<0){
 						comptes.add(c);
 					}
@@ -239,6 +232,13 @@ public class ServiceImp implements IServiceConseiller, IServiceGerant {
 			
 		}
 		return comptes;
+	}
+
+	
+	@Override
+	public void supprimerCompteCourant(CompteCourant compteCourant) {
+		daoCo.delete(compteCourant);
+		
 	}
 
 

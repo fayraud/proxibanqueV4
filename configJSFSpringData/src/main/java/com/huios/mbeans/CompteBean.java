@@ -47,6 +47,46 @@ public class CompteBean implements Serializable {
 	private CompteCourant compteCourant;
 	@Autowired
 	private CompteEpargne compteEpargne;
+	@Autowired
+	private CompteCourant compteCourantASupprimer;
+	
+	
+	
+	
+	
+
+
+	
+
+
+
+	public CompteCourant getCompteCourantASupprimer() {
+		return compteCourantASupprimer;
+	}
+
+	public void setCompteCourantASupprimer(CompteCourant compteCourantASupprimer) {
+		this.compteCourantASupprimer = compteCourantASupprimer;
+	}
+
+	public IServiceGerant getServiceG() {
+		return serviceG;
+	}
+
+	public void setServiceG(IServiceGerant serviceG) {
+		this.serviceG = serviceG;
+	}
+
+	public GerantBean getGerantBean() {
+		return gerantBean;
+	}
+
+	public void setGerantBean(GerantBean gerantBean) {
+		this.gerantBean = gerantBean;
+	}
+
+	
+
+	
 
 	public IServiceConseiller getServiceCo() {
 		return serviceCo;
@@ -159,6 +199,12 @@ public class CompteBean implements Serializable {
 	 public String listeComptesDecouvert(){
 		 getComptesDecouvert();
 		 return "listeComptesDecouvert";
+	 }
+	 public String supprimerCompteCourant(){
+		 System.out.println("avant");
+		serviceCo.supprimerCompteCourant(compteCourantASupprimer);
+		System.out.println("apres");
+		return clientBean.afficherDetails();
 	 }
 	 
 

@@ -58,6 +58,15 @@
 			<p:outputLabel value="Email :" for="email" />
 			<p:inputText id="email" value="#{conseillerBean.conseiller.email}" />
 		</p:panelGrid>
+		<h3>Identification</h3>
+		<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10"
+			layout="grid" styleClass="ui-panelgrid-blank">
+			<p:outputLabel value="login :" for="login" />
+			<p:inputText id="login" value="#{conseillerBean.conseiller.login}" />
+
+			<p:outputLabel value="Mots de passe :" for="PWD" />
+			<p:inputText id="PWD" value="#{conseillerBean.conseiller.pwd}" />
+		</p:panelGrid>
 
 		<p:commandButton value="Ajouter"
 			action="#{conseillerBean.ajouterConseiller(gerantBean.gerant)}" />
